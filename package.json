@@ -1,0 +1,21 @@
+{
+  "name": "hexo-tag-leaflet",
+  "version": "1.0.0",
+  "description": "plugin for hexo which provides a new tag to insert a leaflet based map",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hexo",
+    "plugin",
+    "map",
+    "leaflet",
+    "osm"
+  ],
+  "author": "Heiko Hüter <ender@ender74.de> (http://www.ender74.de)",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.13.1"
+  }
+}

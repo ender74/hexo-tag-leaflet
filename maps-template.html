@@ -1,0 +1,67 @@
+<div id="<%- id %>" style="
+            height: <%- height %>;
+            width: <%- width %>;
+            margin: 0px;
+            padding: 0px
+            ">
+</div>
+<script defer="defer">
+  window.hexoLmaps = window.hexoLmaps || { maps: {}};
+  window.hexoLmaps.maps['init<%- id %>'] = function init() {
+    var mymap = L.map('<%- id %>');
+    mymap.setView([<%- center.latitude %> , <%- center.longitude %>], <%- zoom %>);
+    var osmURL = '<%- baseLayer %>';
+    L.tileLayer(osmURL, {
+        attribution: '<%- attribution %>',
+        maxZoom: 18
+    }).addTo(mymap);
+    var geoJSON = '<%- geoJSON %>'
+    if (geoJSON) {
+      doLoadFile(geoJSON, function(data) {
+        var layer = L.geoJson(JSON.parse(data));
+        layer.addTo(mymap);
+        mymap.fitBounds(layer.getBounds());
+      });
+    }
+  }
+  function doLoadFile(url, callback) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (xhttp.readyState == 4 && xhttp.status == 200) {
+        callback(xhttp.responseText);
+      }
+    };
+    xhttp.open("GET", url, true);
+    xhttp.send();
+  }
+  function makeMaps() {
+    for (var map in window.hexoLmaps.maps) {
+       console.log('map #', map);
+       window.hexoLmaps.maps[map]();
+    }
+  }
+  function doLoadScript(url, callback) {
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = url;
+    script.onreadystatechange = script.onload = function() {
+      if (!callback.done && (!script.readyState || /loaded|complete/.test(script.readyState))) {
+        callback.done = true;
+        callback();
+      }
+    };
+    document.querySelector('head').appendChild(script);
+  }
+  function loadScript() {
+    window.hexoLmaps.mapScripLoaded = true;
+    var css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = 'http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css';
+    document.querySelector('head').appendChild(css);
+
+    doLoadScript('http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js', makeMaps)
+  }
+  if (!window.hexoLmaps.mapScripLoaded) {
+    loadScript();
+  }
+</script>

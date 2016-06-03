@@ -14,8 +14,17 @@
     "osm"
   ],
   "author": "Heiko Hüter <ender@ender74.de> (http://www.ender74.de)",
-  "license": "ISC",
+  "license": "GPL-3.0",
   "dependencies": {
     "lodash": "^4.13.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ender74/hexo-tag-leaflet.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ender74/hexo-tag-leaflet/issues"
+  },
+  "homepage": "https://github.com/ender74/hexo-tag-leaflet#readme"
 }

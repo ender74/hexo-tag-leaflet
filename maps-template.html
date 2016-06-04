@@ -23,6 +23,30 @@
         mymap.fitBounds(layer.getBounds());
       });
     }
+
+    <% _.each(markers, function(marker, i){%>
+      var icon<%- i %>
+      <% if (marker.icon && marker.icon.trim().length > 0) { %>
+        var iconOpts<%- i %> = {
+          iconUrl: '<%- marker.icon %>'
+        }
+        <% if (marker.iconSize) { %>
+          iconOpts<%- i %>.iconSize = <%- marker.iconSize %>
+        <% } %>
+        <% if (marker.iconAnchor) { %>
+          iconOpts<%- i %>.iconAnchor = <%- marker.iconAnchor %>
+        <% } %>
+        icon<%- i %> = L.icon(iconOpts<%- i %>)
+      <% } %>
+      var opts<%- i %> = {
+         'title': '<%- marker.name %>',
+         'zIndexOffset': <%- i %>
+       };
+       if (typeof(icon<%- i %>) !== 'undefined') {
+         opts<%- i %>.icon = icon<%- i %>
+       }
+       var marker<%- i %> = L.marker([<%- marker.latitude %>, <%- marker.longitude %>], opts<%- i %>).addTo(mymap);
+    <%}) %>
   }
   function doLoadFile(url, callback) {
     var xhttp = new XMLHttpRequest();

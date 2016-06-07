@@ -32,7 +32,7 @@ function leaflet(args, content) {
     }
 
     function toOptions(d) {
-      var list = d.split(':');
+      var list = d.split(/:(.+)/);
       switch (list[0]) {
         case 'marker':
           options.markers.push(toMarker(list[1]))
@@ -56,8 +56,8 @@ function leaflet(args, content) {
       latitude: args[0] || markers[0].latitude,
       longitude: args[1] || markers[0].longitude,
     },
-    baseLayer: hexo.config.leaflet.baseLayer || 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-    attribution: hexo.config.leaflet.attribution || 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors.',
+    baseLayer: options.baseLayer || hexo.config.leaflet.baseLayer || 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    attribution: options.attribution || hexo.config.leaflet.attribution || 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors.',
     markers: options.markers,
     geoJSON: options.geoJSON
   };

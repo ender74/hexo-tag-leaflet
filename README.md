@@ -83,3 +83,12 @@ leaflet:
 ```
 
 The given values in this example are the default values, if no configuration is set.
+
+You can override this global config for a specific leaflet tag as follows:
+
+```
+{% leaflet 51.307778 11.049167 13 100% 350px %}
+baseLayer: http://c.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png
+attribution: ©OpenStreetMap
+{% endleaflet %}
+```

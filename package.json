@@ -1,6 +1,6 @@
 {
   "name": "hexo-tag-leaflet",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "plugin for hexo which provides a new tag to insert a leaflet based map",
   "main": "index.js",
   "scripts": {

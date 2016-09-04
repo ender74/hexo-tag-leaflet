@@ -80,10 +80,10 @@
     window.hexoLmaps.mapScripLoaded = true;
     var css = document.createElement('link');
     css.rel = 'stylesheet';
-    css.href = 'https://npmcdn.com/leaflet@0.7.7/dist/leaflet.css';
+    css.href = 'https://unpkg.com/leaflet@0.7.7/dist/leaflet.css';
     document.querySelector('head').appendChild(css);
 
-    doLoadScript('https://npmcdn.com/leaflet@0.7.7/dist/leaflet.js', makeMaps)
+    doLoadScript('https://unpkg.com/leaflet@0.7.7/dist/leaflet.js', makeMaps)
   }
   if (!window.hexoLmaps.mapScripLoaded) {
     loadScript();

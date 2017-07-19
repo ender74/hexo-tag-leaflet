@@ -7,7 +7,7 @@
 - [Loading a route](#loading-a-route)
 - [Config](#config)
 
-Version: 1.0.0
+Version: 1.0.4
 
 Compatible with Hexo Version 3
 

@@ -31,10 +31,10 @@
           iconUrl: '<%- marker.icon %>'
         }
         <% if (marker.iconSize) { %>
-          iconOpts<%- i %>.iconSize = <%- marker.iconSize %>
+          iconOpts<%- i %>.iconSize = [<%- marker.iconSize %>]
         <% } %>
         <% if (marker.iconAnchor) { %>
-          iconOpts<%- i %>.iconAnchor = <%- marker.iconAnchor %>
+          iconOpts<%- i %>.iconAnchor = [<%- marker.iconAnchor %>]
         <% } %>
         icon<%- i %> = L.icon(iconOpts<%- i %>)
       <% } %>
